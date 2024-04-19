@@ -71,7 +71,7 @@ public class ListProdutoController {
         var writer = response.getWriter();
         writer.println("<h1>Home Lojista</h1>\n" +
                 "<h2>Cadastrar produtos</h2>\n" +
-                " <a href=\\\"/logout\\\">\n" +
+                " <a href=\"/logout\">\n" +
                 "    <button>Logout</button>\n" +
                 " </a>\n" +
                 "<a href=\"/listar\">" +

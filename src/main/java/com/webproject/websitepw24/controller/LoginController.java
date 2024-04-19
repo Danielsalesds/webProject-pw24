@@ -28,7 +28,7 @@ public class LoginController {
             HttpSession session = request.getSession();
             session.setAttribute("logado", true);
             session.setAttribute("lojista", true);
-            response.sendRedirect("/paginaLojista");
+            response.sendRedirect("/paginaCliente");
 
         }else if(lojistaDAO.verificarLogin(login, password)){
             HttpSession session = request.getSession();

@@ -43,7 +43,7 @@ public class ProdutoDAO {
             statement.setInt(1, id);
             rs = statement.executeQuery();
             while (rs.next()) {
-                produto = new Produto(rs.getInt("id"),rs.getInt("nome"),rs.getString("descrocao"),rs.getString("preco"),rs.getInt("estoque"));
+                produto = new Produto(rs.getInt("id"),rs.getString("nome"),rs.getString("descricao"),rs.getInt("preco"),rs.getInt("estoque"));
             }
             connection.close();
 
@@ -65,7 +65,7 @@ public class ProdutoDAO {
             statement = connection.prepareStatement(LIST_PRODUTO);
             rs = statement.executeQuery();
             while (rs.next()) {
-                Produto produtos = new Produto(rs.getInt("id"),rs.getInt("nome"),rs.getString("descricao"),rs.getString("preco"),rs.getInt("estoque"));
+                Produto produtos = new Produto(rs.getInt("id"),rs.getString("nome"),rs.getString("descricao"),rs.getInt("preco"),rs.getInt("estoque"));
                 listaDeProdutos.add(produtos);
             }
             connection.close();

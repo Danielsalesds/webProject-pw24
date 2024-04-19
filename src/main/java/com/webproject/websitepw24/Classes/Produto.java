@@ -1,7 +1,7 @@
 package com.webproject.websitepw24.Classes;
 
 public class Produto {
-    public Produto(int id, int preco, String nome, String descricao, int estoque) {
+    public Produto(int id, String nome, String descricao, int preco, int estoque) {
         super();
         this.id = id;
         this.preco = preco;
