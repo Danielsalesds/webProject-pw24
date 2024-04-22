@@ -3,6 +3,8 @@ package com.webproject.websitepw24.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,6 +21,11 @@ public class ListProdutoController {
     List<Produto> produtos =  produtoDao.listarTodosProduto();
     @RequestMapping(value="/paginaCliente")
     public void listarProdutosCliente(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("logado") == null || !(Boolean) session.getAttribute("logado")) {
+            response.sendRedirect("login.html?msg=Login falhou");
+            return; // Encerra o método para evitar a execução do restante do código
+        }
         var writer = response.getWriter();
         produtos = produtoDao.listarTodosProduto();
         writer.println("<html> <head> <title>Home</title> <link rel=\"stylesheet\" href=\"table.css\"> </head> <body> <table>");
@@ -52,6 +59,11 @@ public class ListProdutoController {
     }
     @RequestMapping(value="/paginaLojista")
     public void exibirHomeLojista(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("logado") == null || !(Boolean) session.getAttribute("logado")) {
+            response.sendRedirect("login.html?msg=Login falhou");
+            return; // Encerra o método para evitar a execução do restante do código
+        }
         var writer = response.getWriter();
         writer.println("<html> <head> <title>Home</title> </head> " +
                 "<body> <h1>Home Lojista</h1> <h2>Produtos</h2>\n" +
